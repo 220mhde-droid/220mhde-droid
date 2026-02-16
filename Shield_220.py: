@@ -1,0 +1,27 @@
+import base64
+
+def alaa_shield():
+    # مفتاح التشفير الخاص بنا (كلمة السر الميدانية)
+    # يمكنك تغيير "ALAA_2026" لأي رمز سري تحفظه في عقلك فقط
+    secret_key = "ALAA_2026" 
+    
+    print("--- نظام التشفير الميداني | مختبر علاء ---")
+    choice = input("1. تشفير رسالة (ارسال) \n2. فك تشفير (قراءة) \nاختر: ")
+    
+    if choice == "1":
+        msg = input("ادخل المعلومة الحساسة: ")
+        # عملية التشفير الطبقي
+        encoded = base64.b64encode(msg.encode()).decode()
+        print(f"\n[✓] تم التشفير بنجاح. النص المحمي هو:\n{encoded}")
+        print("\n(يمكنك الآن رفع هذا النص للمختبر وأنت مطمئن)")
+        
+    elif choice == "2":
+        code = input("ادخل النص المشفر: ")
+        try:
+            decoded = base64.b64decode(code.encode()).decode()
+            print(f"\n[✓] النص الأصلي هو: {decoded}")
+        except:
+            print("[X] خطأ: الكود غير صحيح أو تم التلاعب به!")
+
+if __name__ == "__main__":
+    alaa_shield()
