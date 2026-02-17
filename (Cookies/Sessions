@@ -1,0 +1,25 @@
+import os
+
+def sabaa_session_grabber_v13():
+    # التسلسل 13: محاكي صيد الهوية الرقمية
+    print("--- 🛡️ AL-SABAA SESSION HUNTER ---")
+    target_link = "http://sabaa-secure-check.com/verify" # رابط وهمي
+    
+    print(f"[!] جاري تجهيز 'طعم الصيد' على الرابط: {target_link}")
+    
+    # محاكاة سحب بيانات المتصفح
+    captured_data = {
+        "Browser": "Chrome/Android",
+        "Session_ID": "ABC-123-SABAA-99",
+        "Device": "Samsung S24 Ultra",
+        "Location": "Baghdad, Iraq"
+    }
+    
+    with open("Victim_Data.txt", "w") as f:
+        f.write(str(captured_data))
+        
+    print("[✅] تم اصطياد 'الهوية الرقمية' بنجاح.")
+    print("[📂] البيانات محفوظة في ملف: Victim_Data.txt")
+
+if __name__ == "__main__":
+    sabaa_session_grabber_v13()
