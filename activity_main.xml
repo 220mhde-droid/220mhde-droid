@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A0A"> <TextView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="🛡️"
+        android:textSize="100sp" />
+
+    <TextView
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="S7-SENTINEL ACTIVE"
+        android:textColor="#00FF00" 
+        android:textStyle="bold"
+        android:letterSpacing="0.2"/>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="تفعيل بروتوكول الحماية"
+        android:backgroundTint="#CC0000"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>
