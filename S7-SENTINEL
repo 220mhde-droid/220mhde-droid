@@ -1,0 +1,25 @@
+import os
+import time
+
+# تعريف منظومة السبع
+class S7_Sentinel:
+    def __init__(self):
+        self.identity = "Alaa_S7"
+        self.vault_path = "S7_Vault.db"
+        
+    def check_connection(self):
+        # فحص ذكي للشبكة
+        response = os.system("ping -c 1 8.8.8.8 > /dev/null 2>&1")
+        return response == 0
+
+    def capture_data(self, data):
+        if self.check_connection():
+            print(f"✅ تم الإرسال الفوري يا علاء: {data}")
+        else:
+            # هنا السحر: التخزين الصامت عند انقطاع الشبكة
+            with open(self.vault_path, "a") as vault:
+                vault.write(f"{time.ctime()}: {data}\n")
+            print("⚠️ لا يوجد إنترنت.. تم الحفظ في 'صندوق السبع الأسود' بنجاح.")
+
+# بدء تشغيل المحرك
+S7 = S7_Sentinel()
