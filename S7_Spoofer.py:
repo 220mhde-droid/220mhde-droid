@@ -1,0 +1,23 @@
+import random
+import string
+
+def generate_s7_identity():
+    # توليد هوية جهاز وهمية (Device ID)
+    device_id = ''.join(random.choices(string.ascii_lowercase + string.digits, k=16))
+    
+    # قائمة بمتصفحات وهمية للتمويه
+    user_agents = [
+        "Mozilla/5.0 (Linux; Android 13; Pixel 7)",
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X)",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    ]
+    
+    selected_agent = random.choice(user_agents)
+    
+    print(f"🛡️ [S7-SENTINEL] بروتوكول التمويه نشط")
+    print(f"🆔 الهوية الجديدة: {device_id}")
+    print(f"👤 القناع الرقمي: {selected_agent}")
+    print("✅ تم كسر قيود التعقب بنجاح يا علاء")
+
+if __name__ == "__main__":
+    generate_s7_identity()
