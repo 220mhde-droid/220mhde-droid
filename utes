@@ -1,0 +1,65 @@
+import scapy.all as scapy
+import socket
+import argparse
+from datetime import datetime
+
+def get_args():
+    parser = argparse.ArgumentParser(description="أداة الترسانة لفحص الشبكة والمنافذ")
+    parser.add_argument("-t", "--target", dest="target", required=True, help="نطاق الـ IP المراد فحصه (مثال: 192.168.1.1/24 أو IP محدد)")
+    parser.add_argument("-p", "--ports", dest="ports", help="قائمة المنافذ للفحص مفصولة بفاصلة (مثال: 80,443,22) - اختياري")
+    return parser.parse_args()
+
+def scan_network(ip):
+    print(f"\n[*] جاري فحص الشبكة: {ip} ...")
+    arp_req = scapy.ARP(pdst=ip)
+    broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
+    arp_req_broadcast = broadcast/arp_req
+    
+    answered_list = scapy.srp(arp_req_broadcast, timeout=2, verbose=False)[0]
+    
+    clients_list = []
+    for element in answered_list:
+        client_dict = {"ip": element[1].psrc, "mac": element[1].hwsrc}
+        clients_list.append(client_dict)
+    
+    return clients_list
+
+def scan_ports(target_ip, ports):
+    print(f"\n[*] جاري فحص المنافذ للجهاز: {target_ip}")
+    open_ports = []
+    for port in ports:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.settimeout(0.5)
+            result = s.connect_ex((target_ip, int(port)))
+            if result == 0:
+                open_ports.append(port)
+            s.close()
+        except Exception:
+            pass
+    return open_ports
+
+def display_result(results):
+    print("-" * 50)
+    print("IP Address\t\tMAC Address")
+    print("-" * 50)
+    for client in results:
+        print(f"{client['ip']}\t\t{client['mac']}")
+    print("-" * 50)
+
+if __name__ == "__main__":
+    options = get_args()
+    
+    # فحص الأجهزة المتصلة بالشبكة
+    devices = scan_network(options.target)
+    display_result(devices)
+    
+    # فحص المنافذ إذا تم تحديدها
+    if options.ports and devices:
+        ports_to_scan = options.ports.split(",")
+        for device in devices:
+            open_p = scan_ports(device["ip"], ports_to_scan)
+            if open_p:
+                print(f"[+] المنافذ المفتوحة في {device['ip']}: {', '.join(open_p)}")
+            else:
+                print(f"[-] لا يوجد منافذ مفتوحة من القائمة المحددة في {device['ip']}")
